@@ -3,7 +3,11 @@ news_sites:
     url: http://www.eluniversal.com.mx
     queries: 
       homepage_article_links: '.field-content a'
+      article_body: ''
+      article_title: ''
   ladiaria:
     url: https://ladiaria.com.uy/
     queries: 
       homepage_article_links: '.frontpage-section a'
+      article_body: '.ld-card__body a'
+      article_title: '.main h3 a'
