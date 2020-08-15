@@ -2,7 +2,7 @@ news_sites:
   eluniversal:
     url: http://www.eluniversal.com.mx
     queries: 
-      homepage_article_links: ''
+      homepage_article_links: '.field-content a'
   ladiaria:
     url: https://ladiaria.com.uy/
     queries: 

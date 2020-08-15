@@ -1,17 +1,20 @@
 import argparse
 import logging
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.INFO) #método INFO visual en terminal
 
 import new_page_objects as news
 from common import config
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__) #nombre del módulo
 
 
 def _news_scrapper(news_site_uid):
     host = config()['news_sites'][news_site_uid]['url']
+    # En el retorno de la funcion config() se construye 'news_site_uid'
 
     logging.info('Beginning scrapper for {}'.format(host))
+    
+    #se crea la instancia
     homepage = news.HomePage(news_site_uid, host)
 
     for link in homepage.article_links:
@@ -20,7 +23,7 @@ def _news_scrapper(news_site_uid):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser() # Crea un parser bash
     news_site_choices = list(config()['news_sites'].keys())
     parser.add_argument('news_site', help='The news site that you want to scrape', type = str, choices=news_site_choices)
 

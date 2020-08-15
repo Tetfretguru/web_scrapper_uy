@@ -3,7 +3,7 @@ import requests
 from common import config
 
 
-
+# Por cada scraping a un sitio, se construye una instancia de la clase HomePage
 class HomePage:
     def __init__(self, new_site_uid, url):
         self._config = config()['news_sites'][new_site_uid]
