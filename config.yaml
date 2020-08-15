@@ -1,5 +1,9 @@
 news_sites:
   eluniversal:
     url: http://www.eluniversal.com.mx
-  montevideoportal:
-    url: https://montevideo.com.uy
+    queries: 
+      homepage_article_links: ''
+  ladiaria:
+    url: https://ladiaria.com.uy/
+    queries: 
+      homepage_article_links: '.frontpage-section a'
