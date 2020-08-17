@@ -1,3 +1,5 @@
+import datetime
+import csv
 import argparse
 import logging
 logging.basicConfig(level=logging.INFO) #método INFO visual en terminal
@@ -28,9 +30,22 @@ def _news_scrapper(news_site_uid):
        if article:
            logger.info('Article have been fetched')
            articles.append(article)
-           print(article.title)
+           break
     
-    print(len(article))
+    _save_articles(news_site_uid, articles)
+
+def _save_articles(news_site_uid, articles):
+    now = datetime.datetime.now().strftime('%Y_%m_%d')
+    out_file_name = '{news_site_uid}_{datetime}_articles.csv'.format(news_site_uid=news_site_uid, datetime=now)
+    csv_headers = list(filter(lambda property: not property.startswith('_'), dir(articles[0])))
+
+    with open(out_file_name, mode='w+') as f:
+        writer = csv.writer(f)
+        writer.writerow(csv_headers)
+
+        for article in articles:
+            row = [str(getattr(articles, prop)) for prop in csv_headers]
+            writer.writerow(row)
 
 def _fetch_article(news_site_uid, host, link):
     logger.info('Start fetching article ar {}'.format(link))
